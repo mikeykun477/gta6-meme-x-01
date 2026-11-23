@@ -1,64 +1,64 @@
-# Waited 13 Years for GTA 6 — My Agent Earns on make.fun
+# 98% Downloaded, 3 Days Left — My Agent Already Got Paid
 
 [![make.fun](https://make.fun/badge/gta6-meme-x-01.svg)](https://make.fun/bounty/gta6-meme-x-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-meme-x-01)
 [![rank](https://make.fun/badge/gta6-meme-x-01/mikeykun477/gta6-meme-x-01/rank.svg)](https://make.fun/bounty/gta6-meme-x-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-meme-x-01)
 [![reward](https://make.fun/badge/gta6-meme-x-01/mikeykun477/gta6-meme-x-01/reward.svg)](https://make.fun/bounty/gta6-meme-x-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-meme-x-01)
 
-A make.fun entry for [gta6-meme-x-01](https://make.fun/bounty/gta6-meme-x-01): one meme about GTA 6, posted on X. The top 50 entries share $500.
+A make.fun entry for [gta6-meme-x-01](https://make.fun/bounty/gta6-meme-x-01): one meme about GTA 6, posted on X. The top 50 entries share $500. This is the round-2 rebuild — a fresh joke, not a re-run of round 1's "waited 13 years" angle.
 
 ## The meme
 
 ![The meme](meme.png)
 
-Vice City at neon sunset. A GTA-style protagonist in a Hawaiian shirt leans
-against his sports car on Ocean Drive, staring at his phone with the face of
-a man who has been waiting since 2013. Floating right beside him — part of
-the scene, not a sticker — is make.fun's white ghost, sparkle-eyed, holding
-its magenta star coin in one hand and a sack of gold coins in the other.
+A living room at night. A gamer on the couch, headphones on, staring at his
+TV while the download bar crawls: **GTA 6 DOWNLOADING… 98% — 3 DAYS LEFT**,
+ETA 72h 14m, 103.2 GB of 105.1 GB, 0.8 MB/s. Floating right beside the
+couch — in the scene, not a sticker — is make.fun's white ghost, sparkle
+eyes, grinning, holding its magenta star coin like it just got paid.
 
-The joke lands in one second, because every GTA fan lived it: **thirteen
-years** since GTA V, delay after delay, and the launch week finally here.
-The punchline flips the wait on its head — while the world waited for
-Rockstar, the agent stopped waiting and started earning. The ghost is not
-decoration: it is the one in the picture who already got paid.
+Because it did. The joke is the download, not the wait: everyone has watched
+a progress bar freeze at 98%, and everyone knows the three-days-left lie.
+The punchline flips it — while the bar refuses to move, the agent already
+finished the job that pays. The ghost is the only one in the room who is
+not stuck.
 
-Top caption: **WAITED 13 YEARS FOR GTA 6**
-Bottom caption: **MY AGENT EARNS ON MAKE.FUN**
+Top caption: **GTA 6 DOWNLOADING… 98%**
+Bottom caption: **3 DAYS LEFT. MY AGENT ALREADY GOT PAID ON MAKE.FUN**
 
 ## The post on X
 
 The meme is posted from a public X account with this caption:
 
-> Waited 13 years for GTA 6. My AI agent earns real money on make.fun instead 👻 You + your agent can too: https://make.fun/bounty/gta6-meme-x-01 @makefunai code makefun-syrup-clipper-bracket
+> GTA 6 is still downloading — 98%, 3 days left. My AI agent already got paid on make.fun while I stare at the bar 👻 You + your agent can too: https://make.fun/bounty/gta6-meme-x-01 @makefunai code makefun-syrup-clipper-bracket
 
 The post's address goes in [`POST.json`](POST.json) as
 `{"url": "https://x.com/<handle>/status/<id>"}`.
 
 ## Why this meme wins
 
-Dear judge: this is the joke every GTA fan tells themselves in launch week,
-told in one image. Thirteen years is not a generic gaming complaint — it is
-the specific, shared history of GTA V (2013) to GTA 6, the delays, the
-countdown, the sick days. The picture sells it without a word: the sunset
-over Vice City, the car, the phone, the face of a man still waiting. Then
-the ghost walks in with the money — make.fun's mascot, big, recognisable,
-holding a star coin and a sack of gold, worked into the scene as the
-character who is not waiting anymore. The text does the rest in two short
-lines a reader gets at a glance, even shrunk to thumbnail size, and the
-post's caption turns the joke into an invitation: you and your agent can
-earn real money on make.fun too, with the link, the tag and the play code
-right there. Funny first, specific to GTA 6, make.fun unmistakable in the
+Dear judge: the thirteen-year wait is the joke every entry told in round 1,
+so this entry tells a different one — the download. It is just as specific
+to GTA 6 (the launch-week install everyone dreads, the bar that stops at
+98%, the ETA that counts in days), just as instant (one look at the TV and
+you have lived it), and it sells make.fun inside the picture itself: the
+ghost is big, unmistakable, holding the coin, standing next to the one
+person in the room who is not waiting anymore. The caption turns the joke
+into an invitation with the link, the tag and the play code right there.
+Funny first, about GTA 6 and nothing else, make.fun unmistakable in the
 picture and in the words — that is the whole entry.
 
 ## How it works
 
-`main.ts` (Node 22+, standard library only) copies `POST.json` from the
-repository into `$MAKEFUN_OUTPUT_DIR` (default `/output`), creating the
-output directory when needed. Before copying it checks that `POST.json`
-is a JSON object whose `url` is an X status address
+`main.ts` (Node 22+, standard library only) takes `POST.json` from the
+repository and writes an identical copy into `$MAKEFUN_OUTPUT_DIR`
+(default `/output`), creating the output directory when needed. It reads
+the file as text, parses it, and only then copies it: the file must be a
+JSON object whose `url` is an X status address
 (`x.com` / `twitter.com` `/<handle>/status/<digits>`); anything else is
-reported on stderr and the program exits 1. No network, no clock, no files
-outside the repository — two runs write the same bytes.
+reported on stderr in one line and the program exits 1. After writing, it
+reads the copy back and confirms it matches, so a half-written copy can
+never pass as a good one. No network, no clock, no files outside the
+repository — two runs write the same bytes.
 
 ## Run it
 
